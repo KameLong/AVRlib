@@ -8,12 +8,12 @@ void timer(){
     char str[10];
     sprintf(str,"%d\n",(int)Timer::time);
 
-    USART::writeData(str);
+    UART::writeData(str);
 }
 
 //UARTで送られてきたデータをそのままUARTで返す
 void UARTCallback(char *data){
-    USART::writeData(data);
+    UART::writeData(data);
 }
 
 
@@ -23,8 +23,8 @@ int main(){
 
     Timer::init();
     Timer::setTimeout(timer,1000);
-    USART::init(9600);
-    USART::resCallBack=UARTCallback;
+    UART::init(9600);
+    UART::resCallBack=UARTCallback;
 
     sei();
     while(1)

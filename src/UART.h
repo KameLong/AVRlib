@@ -12,7 +12,7 @@
 #endif
 
 //RX TX ピンを用いてUSART通信をします
-class USART{
+class UART{
 public:
     static const uint8 SEND_BUF_SIZE=64;
     static const uint8 RECEIVE_BUF_SIZE=64;
@@ -123,23 +123,23 @@ private:
 
 
 };
-uint8 USART::addPos=0;
-uint8 USART::sendPos=0;
-char USART::sendBuf[USART::SEND_BUF_SIZE];
-uint8 USART::state=0b00000000;
-char USART::receiveBuf[USART::SEND_BUF_SIZE];
-uint8 USART::receivePos=0;
-void  (* USART::resCallBack)(char*);
+uint8 UART::addPos=0;
+uint8 UART::sendPos=0;
+char UART::sendBuf[UART::SEND_BUF_SIZE];
+uint8 UART::state=0b00000000;
+char UART::receiveBuf[UART::SEND_BUF_SIZE];
+uint8 UART::receivePos=0;
+void  (* UART::resCallBack)(char*);
 
 //=================================================================================================
 // USART割り込み
 //=================================================================================================
 ISR(USART_RX_vect){
     char res=UDR0;
-    USART::receive(res);
+    UART::receive(res);
 }
 ISR(USART_TX_vect){
-    USART::send();
+    UART::send();
 }
 
 
