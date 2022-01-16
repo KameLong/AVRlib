@@ -1,0 +1,4 @@
+/.git
+/cmake-build-debug
+/CmakeLists.txt
+/build/*
